@@ -1,0 +1,14 @@
+package com.betrybe.museumfinder.dto;
+
+import com.betrybe.museumfinder.model.Coordinate;
+
+/**
+ * Record representing a Creation Museum.
+ */
+public record MuseumCreationDto(
+   String name, String description,
+    String address, String collectionType, String subject,
+    String url, Coordinate coordinate
+) {
+  
+}
