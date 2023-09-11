@@ -43,10 +43,6 @@ public class MuseumController {
   ) {
     Coordinate coordinate = new Coordinate(lat, lng);
     Museum closestMuseum = this.museumService.getClosestMuseum(coordinate, maxDistanceKm);
-    if (closestMuseum != null) {
-      return ResponseEntity.status(HttpStatus.OK).body(closestMuseum);
-    }
-
-    return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    return ResponseEntity.status(HttpStatus.OK).body(closestMuseum);
   }
 }
