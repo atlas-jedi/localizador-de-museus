@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,5 +45,11 @@ public class MuseumController {
     Coordinate coordinate = new Coordinate(lat, lng);
     Museum closestMuseum = this.museumService.getClosestMuseum(coordinate, maxDistanceKm);
     return ResponseEntity.status(HttpStatus.OK).body(closestMuseum);
+  }
+
+  @GetMapping("/{id}")
+  public ResponseEntity<Museum> getMuseum(@PathVariable Long id) {
+    Museum museum = museumService.getMuseum(id);
+    return ResponseEntity.status(HttpStatus.OK).body(museum);
   }
 }
