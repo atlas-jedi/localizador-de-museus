@@ -117,7 +117,7 @@
             <usePhrasedClassNameInTestCaseSummary>true</usePhrasedClassNameInTestCaseSummary>
           </statelessTestsetInfoReporter>
           <includes>
-            <include>**/evaluation/*Test.java</include>
+            <include>**/solution/*Test.java</include>
           </includes>
         </configuration>
       </plugin>
