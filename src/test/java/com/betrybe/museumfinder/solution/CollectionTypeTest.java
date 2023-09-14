@@ -4,6 +4,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -27,9 +28,17 @@ class CollectionTypeTest {
     String jsonString = "{\"collectionTypes\":[\"hist\",\"imag\"],\"count\":492}";
 
     this.mockMvc.perform(get("/collections/count/hist,imag"))
-        .andDo(print())
         .andExpect(status().isOk())
         .andExpect(content().contentType(MediaType.APPLICATION_JSON))
         .andExpect(content().json(jsonString));
+  }
+
+  @Test
+  @DisplayName("Teste das rotas /museums/")
+  void testMuseums() throws Exception {
+    this.mockMvc.perform(get("/museums/1"))
+        .andExpect(status().isOk())
+        .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+        .andExpect(jsonPath("$.collectionType").value("História"));
   }
 }
